@@ -2,6 +2,8 @@ package junit.tutorial;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
+import static junit.tutorial.custommatcher.IsDate.*;
+import java.util.Date;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -38,5 +40,11 @@ class CalculatorTest {
             Calculator calc = new Calculator();
             calc.divide(5, 0);
         });
+    }
+
+    @Test
+    void 日付の比較() throws Exception {
+        Date date = new Date();
+        assertThat(date, is(dateOf(2021, 7, 7)));
     }
 }
